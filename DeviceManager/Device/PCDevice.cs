@@ -28,7 +28,7 @@ namespace DeviceManager.Device
             }
             catch (ManagementException)
             {
-                throw new PCDeviceException("Cannot enable this device.");
+                throw new PCDeviceException("Cannot " + method.ToLower() + " this device.");
             }
             this.Enabled = (method == "Enable") ? true : false;
         }
