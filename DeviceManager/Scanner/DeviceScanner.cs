@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,7 +30,7 @@ namespace DeviceManager.Scanner
         public List<PCDevice> UpdateDevices()
         {
             var deviceList = new List<PCDevice>();
-            var wmiDeviceList = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity").Get();
+            var wmiDeviceList = new ManagementObjectSearcher("SELECT * FROM Win32_PnPEntity").Get().OfType<ManagementObject>();
 
             foreach (var device in wmiDeviceList)
             {
@@ -43,7 +43,7 @@ namespace DeviceManager.Scanner
                 currentDevice.DevicePath = device[DEVICE_PATH_PROPERTY].ToString();
                 currentDevice.Enabled = (device[DEVICE_STATUS_PROPERTY].ToString() == "OK") ? true : false;
 
-                var driverInfo = ((ManagementObject)device).GetRelated("Win32_SystemDriver");
+                var driverInfo = device.GetRelated("Win32_SystemDriver");
                 foreach (var driver in driverInfo)
                 {
                     currentDevice.SysFile = driver[SYS_FILE_PROPERTY].ToString();
