@@ -46,11 +46,12 @@ namespace DeviceManager
             {
                 deviceList.FirstOrDefault(x => x.DevicePath.Equals(devicesGridView.SelectedCells[6].Value))?.ChangeState("Enable");
                 MessageBox.Show(this, devicesGridView.SelectedCells[3].Value + " was enabled succefully", "OK - deviceManager");
+
+                disableButton.Enabled = true;
+                enableButton.Enabled = false;
             }
             catch (PCDeviceException exc) { MessageBox.Show(this, exc.Message, "Error - DeviceManager"); }
 
-            disableButton.Enabled = true;
-            enableButton.Enabled = false;
         }
 
         private void DisableButton_Click(object sender, EventArgs e)
@@ -61,11 +62,12 @@ namespace DeviceManager
             {
                 deviceList.FirstOrDefault(x => x.DevicePath.Equals(devicesGridView.SelectedCells[6].Value))?.ChangeState("Disable");
                 MessageBox.Show(this, devicesGridView.SelectedCells[3].Value + " was disabled succefully", "OK - deviceManager");
+
+                disableButton.Enabled = false;
+                enableButton.Enabled = true;
             }
             catch (PCDeviceException exc) { MessageBox.Show(this, exc.Message, "Error - DeviceManager"); }
 
-            disableButton.Enabled = false;
-            enableButton.Enabled = true;
         }
 
         private void DevicesGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
