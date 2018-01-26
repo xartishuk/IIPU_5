@@ -72,8 +72,7 @@ namespace DeviceManager
 
         private void DevicesGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            var selectedRow = devicesGridView.SelectedRows[0].Index;
-            var device = dispatcher.Devices[selectedRow];
+            var device = dispatcher.Devices.FirstOrDefault(x => x.DevicePath.Equals(devicesGridView.SelectedCells[6].Value));
             if (device.Enabled == true)
             {
                 enableButton.Enabled = false;
