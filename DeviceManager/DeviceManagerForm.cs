@@ -44,8 +44,8 @@ namespace DeviceManager
             var deviceList = dispatcher.Devices;
             try
             {
-                deviceList[selectedRow]?.ChangeState("Enable");
-                MessageBox.Show(this, deviceList[selectedRow].Name + " was enabled succefully", "OK - deviceManager");
+                deviceList.FirstOrDefault(x => x.DevicePath.Equals(devicesGridView.SelectedCells[6].Value))?.ChangeState("Enable");
+                MessageBox.Show(this, devicesGridView.SelectedCells[3].Value + " was enabled succefully", "OK - deviceManager");
             }
             catch (PCDeviceException exc) { MessageBox.Show(this, exc.Message, "Error - DeviceManager"); }
 
@@ -59,8 +59,8 @@ namespace DeviceManager
             var deviceList = dispatcher.Devices;
             try
             {
-                deviceList[selectedRow]?.ChangeState("Disable");
-                MessageBox.Show(this, deviceList[selectedRow].Name + " was disabled succefully", "OK - deviceManager");
+                deviceList.FirstOrDefault(x => x.DevicePath.Equals(devicesGridView.SelectedCells[6].Value))?.ChangeState("Disable");
+                MessageBox.Show(this, devicesGridView.SelectedCells[3].Value + " was disabled succefully", "OK - deviceManager");
             }
             catch (PCDeviceException exc) { MessageBox.Show(this, exc.Message, "Error - DeviceManager"); }
 
