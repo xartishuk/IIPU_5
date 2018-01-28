@@ -1,6 +1,17 @@
-﻿namespace DeviceManager
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using DeviceManager.Dispatcher;
+using DeviceManager.Device;
+
+namespace DeviceManager
 {
-    partial class DeviceManagerForm
+    partial class DeviceManagerForm : Form
     {
         /// <summary>
         /// Требуется переменная конструктора.
@@ -68,7 +79,7 @@
             this.devicesGridView.ReadOnly = true;
             this.devicesGridView.Size = new System.Drawing.Size(2752, 719);
             this.devicesGridView.TabIndex = 0;
-            this.devicesGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.devicesGridView_CellContentClick);
+            this.devicesGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DevicesGridView_CellContentClick);
             // 
             // GUIDColumn
             // 
@@ -138,7 +149,7 @@
             this.disableButton.TabIndex = 2;
             this.disableButton.Text = "Disable";
             this.disableButton.UseVisualStyleBackColor = true;
-            this.disableButton.Click += new System.EventHandler(this.disableButton_Click);
+            this.disableButton.Click += new System.EventHandler(this.DisableButton_Click);
             // 
             // enableButton
             // 
@@ -150,7 +161,7 @@
             this.enableButton.TabIndex = 1;
             this.enableButton.Text = "Enable";
             this.enableButton.UseVisualStyleBackColor = true;
-            this.enableButton.Click += new System.EventHandler(this.enableButton_Click);
+            this.enableButton.Click += new System.EventHandler(this.EnableButton_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -168,7 +179,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(2752, 121);
             this.tableLayoutPanel1.TabIndex = 4;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.TableLayoutPanel1_Paint);
             // 
             // DeviceManagerForm
             // 
